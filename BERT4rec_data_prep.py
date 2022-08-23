@@ -13,8 +13,12 @@ if __name__ == '__main__':
     # output_dataset_dir = "/home/mdev/session-rec-empirical/data/rsc15/BERT4REC_prepared"
     output_dataset_dir = "/home/mdev/BERT4rec_py3_tf2/BERT4rec/data"
 
-    all_datasets_filenames = [f for f in listdir(all_datasets_txts_dir_path)]
+    all_datasets_filenames = ["yoochoose-clicks-100k_train_full.txt", "yoochoose-clicks-100k_test.txt"]
 
+    unique_session_count = 0
+    current_session_id = ""
+    unique_item_count = 0
+    item_map = {}  # key is real item id, value is transformed id (current unique item id)
     for input_dataset_filename in all_datasets_filenames:
         output_dataset_filename = "BERT4REC_" + input_dataset_filename
 
@@ -24,10 +28,6 @@ if __name__ == '__main__':
         with open(input_dataset_path) as input, open(output_dataset_path, "a") as output:
             input.readline()  # first line not neccessary for BERT4REC
 
-            unique_session_count = 0
-            current_session_id = ""
-            unique_item_count = 0
-            item_map = {}  # key is real item id, value is transformed id (current unique item id)
             for line in input:
                 line_without_timestamp = line.rsplit("\t", 1)[0]
                 session_id, item_id = line_without_timestamp.split("\t")
