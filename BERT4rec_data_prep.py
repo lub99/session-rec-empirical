@@ -9,18 +9,19 @@ def transform_line(line):
 
 if __name__ == '__main__':
 
-    all_datasets_txts_dir_path = "/home/mdev/session-rec-empirical/data/rsc15/prepared"
+    all_datasets_txts_dir_path = "/home/mdev/session-rec-empirical/data/rsc15/slices"
     # output_dataset_dir = "/home/mdev/session-rec-empirical/data/rsc15/BERT4REC_prepared"
-    output_dataset_dir = "/home/mdev/BERT4rec_py3_tf2/BERT4rec/data"
+    output_dataset_dir = "/home/mdev/BERT4rec_py3_tf2/BERT4rec/data/rsc15/input/"
 
-    all_datasets_filenames = ["yoochoose-clicks-100k_train_full.txt", "yoochoose-clicks-100k_test.txt"]
+    all_datasets_filenames = ["rsc15-clicks_test.4.txt", "rsc15-clicks_train_full.4.txt"]
+
 
     unique_session_count = 0
     current_session_id = ""
     unique_item_count = 0
     item_map = {}  # key is real item id, value is transformed id (current unique item id)
     for input_dataset_filename in all_datasets_filenames:
-        output_dataset_filename = "BERT4REC_" + input_dataset_filename
+        output_dataset_filename =  input_dataset_filename
 
         input_dataset_path = join(all_datasets_txts_dir_path, input_dataset_filename)
         output_dataset_path = join(output_dataset_dir, output_dataset_filename)
