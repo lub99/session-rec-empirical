@@ -1,0 +1,28 @@
+type: single # single|window|opt
+key: gru4rec #added to the csv names
+evaluation: evaluation_last # evaluation_user_based
+data:
+  name: rsc15 #added in the end of the csv names
+  folder: data/rsc15/prepared/dipl/
+  prefix: rsc15-clicks
+  #type: txt # hdf|csv(default)
+#  slices: 5 #only window
+#  skip: [0,3] #only window
+
+results:
+  folder: results/session-based/rsc15/
+
+metrics:
+- class: accuracy.HitRate
+  length: [10,20]
+- class: accuracy.MRR
+  length: [10,20]
+- class: coverage.Coverage
+  length: [20]
+- class: popularity.Popularity
+  length: [20]
+
+algorithms:
+- class: gru4rec.gru4rec.GRU4Rec
+  params: { loss: 'top1-max', final_act: 'linear', dropout_p_hidden: 0.3, learning_rate: 0.04, momentum: 0.0, constrained_embedding: True }
+  key: gru4rec
