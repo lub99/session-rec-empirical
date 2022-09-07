@@ -9,7 +9,7 @@ if __name__ == '__main__':
     # output_dataset_dir = "/home/mdev/session-rec-empirical/data/rsc15/BERT4REC_prepared"
     output_dataset_dir = "/home/mdev/BERT4rec_py3_tf2/BERT4rec/data/digi/input/"
 
-    all_datasets_filenames = ["train-item-views_train_full.4.txt", "train-item-views_test.4.txt"]
+    all_datasets_filenames = ["train-item-views_train_full.txt", "train-item-views_test.txt"]
 
 
     unique_session_count = 0

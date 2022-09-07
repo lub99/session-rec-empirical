@@ -1,16 +1,16 @@
 type: single # single|window|opt
-key: gru4rec #added to the csv names
+key: v-sknn #added to the csv names
 evaluation: evaluation_last # evaluation_user_based
 data:
-  name: rsc15_30_EPOCHS #added in the end of the csv names
-  folder: data/rsc15/prepared/dipl/
-  prefix: rsc15-clicks
+  name: digi #added in the end of the csv names
+  folder: data/digi/prepared/dipl/
+  prefix: train-item-views
   #type: txt # hdf|csv(default)
 #  slices: 5 #only window
 #  skip: [0,3] #only window
 
 results:
-  folder: results/session-based/rsc15/
+  folder: results/session-based/digi/
 
 metrics:
 - class: accuracy.HitRate
@@ -25,6 +25,6 @@ metrics:
   length: [20]
 
 algorithms:
-- class: gru4rec.gru4rec.GRU4Rec
-  params: { n_epochs: 30, loss: 'top1-max', final_act: 'linear', dropout_p_hidden: 0.3, learning_rate: 0.04, momentum: 0.0, constrained_embedding: True }
-  key: gru4rec
+- class: knn.vsknn.VMContextKNN
+  params: { k: 500, sample_size: 5000, weighting: quadratic , weighting_score: div, idf_weighting: 5  }
+  key: vsknn
